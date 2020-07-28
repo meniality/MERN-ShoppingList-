@@ -16,20 +16,20 @@ class ShoppingList extends Component {
   }
 
   render(){
-    const {items} = this.props.item
+    const {items} = this.props.items
 
     return(
       <Container>
         <ListGroup>
           <TransitionGroup className="shopping-list">
-            {items.map(({id, name}) => (
-              <CSSTransition key ={id} timeout ={500} classNames="fade">
+            {items.map(({_id, name}) => (
+              <CSSTransition key ={_id} timeout ={500} classNames="fade">
                 <ListGroupItem>
                   <Button
                     className="remove-btn"
                     color="danger"
                     size="sm"
-                    onClick={() => this.onDeleteClick(id)}
+                    onClick={() => this.onDeleteClick(_id)}
                   >
                     &times;
                   </Button>
@@ -50,7 +50,7 @@ ShoppingList.propTypes = {
 }
 
 const mapStateToProps = (state) => ({
-  item: state.item
+  items: state.items
 })
 
 export default connect(
